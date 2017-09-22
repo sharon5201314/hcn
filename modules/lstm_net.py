@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 import tensorflow as tf
 from tensorflow.contrib.layers import xavier_initializer as xav
 
@@ -16,7 +20,7 @@ class LSTM_net():
 
             # entry points
             features_ = tf.placeholder(tf.float32, [1, obs_size], name='input_features')
-            init_state_c_, init_state_h_ = ( tf.placeholder(tf.float32, [1, nb_hidden]) for _ in range(2) )
+            init_state_c_, init_state_h_ = (tf.placeholder(tf.float32, [1, nb_hidden]) for _ in range(2))
             action_ = tf.placeholder(tf.int32, name='ground_truth_action')
             action_mask_ = tf.placeholder(tf.float32, [action_size], name='action_mask')
 
@@ -86,12 +90,12 @@ class LSTM_net():
     # forward propagation
     def forward(self, features, action_mask):
         # forward
-        probs, prediction, state_c, state_h = self.sess.run( [self.probs, self.prediction, self.state.c, self.state.h], 
-                feed_dict = { 
-                    self.features_ : features.reshape([1,self.obs_size]), 
-                    self.init_state_c_ : self.init_state_c,
-                    self.init_state_h_ : self.init_state_h,
-                    self.action_mask_ : action_mask
+        probs, prediction, state_c, state_h = self.sess.run([self.probs, self.prediction, self.state.c, self.state.h],
+                feed_dict={
+                    self.features_: features.reshape([1,self.obs_size]),
+                    self.init_state_c_: self.init_state_c,
+                    self.init_state_h_: self.init_state_h,
+                    self.action_mask_: action_mask
                     })
         # maintain state
         self.init_state_c = state_c
@@ -101,8 +105,8 @@ class LSTM_net():
 
     # training
     def train_step(self, features, action, action_mask):
-        _, loss_value, state_c, state_h = self.sess.run( [self.train_op, self.loss, self.state.c, self.state.h],
-                feed_dict = {
+        _, loss_value, state_c, state_h = self.sess.run([self.train_op, self.loss, self.state.c, self.state.h],
+                feed_dict={
                     self.features_: features.reshape([1, self.obs_size]),
                     self.action_: [action],
                     self.init_state_c_: self.init_state_c,
@@ -116,8 +120,8 @@ class LSTM_net():
 
     def reset_state(self):
         # set init state to zeros
-        self.init_state_c = np.zeros([1,self.nb_hidden], dtype=np.float32)
-        self.init_state_h = np.zeros([1,self.nb_hidden], dtype=np.float32)
+        self.init_state_c = np.zeros([1, self.nb_hidden], dtype=np.float32)
+        self.init_state_h = np.zeros([1, self.nb_hidden], dtype=np.float32)
 
     # save session to checkpoint
     def save(self):

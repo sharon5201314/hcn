@@ -1,3 +1,8 @@
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 import modules.util as util
 
 
@@ -29,7 +34,7 @@ class Data():
         responses = [self.get_template_id(response) for response in responses]
 
         trainset = []
-        for u,r in zip(utterances, responses):
+        for u, r in zip(utterances, responses):
             trainset.append((u, r))
 
         return trainset, dialog_indices

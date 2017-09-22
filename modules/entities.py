@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 from enum import Enum
 import numpy as np
 
@@ -50,8 +54,8 @@ class EntityTracker():
 
     def context_features(self):
        keys = list(set(self.entities.keys()))
-       self.ctxt_features = np.array( [bool(self.entities[key]) for key in keys], 
-                                   dtype=np.float32 )
+       self.ctxt_features = np.array([bool(self.entities[key]) for key in keys],
+                                   dtype=np.float32)
        return self.ctxt_features
 
 
