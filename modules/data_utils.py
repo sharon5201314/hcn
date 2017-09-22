@@ -26,11 +26,11 @@ class Data():
         utterances = util.get_utterances(dialogs)
         # get responses
         responses = util.get_responses(dialogs)
-        responses = [ self.get_template_id(response) for response in responses ]
+        responses = [self.get_template_id(response) for response in responses]
 
         trainset = []
         for u,r in zip(utterances, responses):
-            trainset.append((u,r))
+            trainset.append((u, r))
 
         return trainset, dialog_indices
 

@@ -6,10 +6,10 @@ class EntityTracker():
 
     def __init__(self):
         self.entities = {
-                '<cuisine>' : None,
-                '<location>' : None,
-                '<party_size>' : None,
-                '<rest_type>' : None,
+                '<cuisine>': None,
+                '<location>': None,
+                '<party_size>': None,
+                '<rest_type>': None,
                 }
         self.num_features = 4 # tracking 4 entities
         self.rating = None

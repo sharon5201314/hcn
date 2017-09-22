@@ -39,28 +39,28 @@ class ActionTracker():
         self.am = np.zeros([self.action_size], dtype=np.float32)
         # action mask lookup, built on intuition
         self.am_dict = {
-                '0000' : [ 4,8,1,14,7,15],
-                '0001' : [ 4,8,1,14,7],
-                '0010' : [ 4,8,1,14,15],
-                '0011' : [ 4,8,1,14],
-                '0100' : [ 4,8,1,7,15],
-                '0101' : [ 4,8,1,7],
-                '0110' : [ 4,8,1,15],
-                '0111' : [ 4,8,1],
-                '1000' : [ 4,8,14,7,15],
-                '1001' : [ 4,8,14,7],
-                '1010' : [ 4,8,14,15],
-                '1011' : [ 4,8,14],
-                '1100' : [ 4,8,7,15],
-                '1101' : [ 4,8,7],
-                '1110' : [ 4,8,15],
-                '1111' : [ 2,3,5,6,8,9,10,11,12,13,16 ]
+                '0000': [4,8,1,14,7,15],
+                '0001': [4,8,1,14,7],
+                '0010': [4,8,1,14,15],
+                '0011': [4,8,1,14],
+                '0100': [4,8,1,7,15],
+                '0101': [4,8,1,7],
+                '0110': [4,8,1,15],
+                '0111': [4,8,1],
+                '1000': [4,8,14,7,15],
+                '1001': [4,8,14,7],
+                '1010': [4,8,14,15],
+                '1011': [4,8,14],
+                '1100': [4,8,7,15],
+                '1101': [4,8,7],
+                '1110': [4,8,15],
+                '1111': [2,3,5,6,8,9,10,11,12,13,16 ]
                 }
 
 
     def action_mask(self):
         # get context features as string of ints (0/1)
-        ctxt_f = ''.join([ str(flag) for flag in self.et.context_features().astype(np.int32) ])
+        ctxt_f = ''.join([str(flag) for flag in self.et.context_features().astype(np.int32)])
 
         def construct_mask(ctxt_f):
             indices = self.am_dict[ctxt_f]
@@ -71,8 +71,8 @@ class ActionTracker():
         return construct_mask(ctxt_f)
 
     def get_action_templates(self):
-        responses = list(set([ self.et.extract_entities(response, update=False) 
-            for response in util.get_responses() ]))
+        responses = list(set([self.et.extract_entities(response, update=False)
+            for response in util.get_responses()]))
 
         def extract_(response):
             template = []
@@ -87,6 +87,5 @@ class ActionTracker():
                 else:
                     template.append(word)
             return ' '.join(template)
-
         # extract restaurant entities
-        return sorted(set([ extract_(response) for response in responses ]))
+        return sorted(set([extract_(response) for response in responses]))

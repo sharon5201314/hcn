@@ -79,8 +79,8 @@ class LSTM_net():
         sess.run(tf.global_variables_initializer())
         self.sess = sess
         # set init state to zeros
-        self.init_state_c = np.zeros([1,self.nb_hidden], dtype=np.float32)
-        self.init_state_h = np.zeros([1,self.nb_hidden], dtype=np.float32)
+        self.init_state_c = np.zeros([1, self.nb_hidden], dtype=np.float32)
+        self.init_state_h = np.zeros([1, self.nb_hidden], dtype=np.float32)
 
 
     # forward propagation
@@ -103,11 +103,11 @@ class LSTM_net():
     def train_step(self, features, action, action_mask):
         _, loss_value, state_c, state_h = self.sess.run( [self.train_op, self.loss, self.state.c, self.state.h],
                 feed_dict = {
-                    self.features_ : features.reshape([1, self.obs_size]),
-                    self.action_ : [action],
-                    self.init_state_c_ : self.init_state_c,
-                    self.init_state_h_ : self.init_state_h,
-                    self.action_mask_ : action_mask
+                    self.features_: features.reshape([1, self.obs_size]),
+                    self.action_: [action],
+                    self.init_state_c_: self.init_state_c,
+                    self.init_state_h_: self.init_state_h,
+                    self.action_mask_: action_mask
                     })
         # maintain state
         self.init_state_c = state_c

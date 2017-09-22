@@ -1,3 +1,11 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import sys
+from os.path import abspath, dirname, join
+_PROJECT_DIR = dirname(abspath(__file__))
+sys.path.append(_PROJECT_DIR)
 from modules.entities import EntityTracker
 from modules.bow import BoW_encoder
 from  modules.lstm_net import LSTM_net
@@ -29,13 +37,13 @@ class Trainer():
         nb_hidden = 128
 
         self.net = LSTM_net(obs_size=obs_size,
-                       action_size=action_size,
-                       nb_hidden=nb_hidden)
+                            action_size=action_size,
+                            nb_hidden=nb_hidden)
 
 
     def train(self):
 
-        print('\n:: training started\n')
+        print('\n---training started---\n')
         epochs = 20
         for j in range(epochs):
             # iterate through dialogs

@@ -23,7 +23,7 @@ class BoW_encoder():
         content = util.read_content()
         vocab = sorted(set(content.split(' ')))
         # remove empty strings
-        return [ item for item in vocab if item ]
+        return [item for item in vocab if item]
 
     def encode(self, utterance):
         bow = np.zeros([self.vocab_size], dtype=np.int32)

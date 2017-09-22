@@ -5,6 +5,8 @@
 
 ![](https://raw.githubusercontent.com/voicy-ai/DialogStateTracking/master/images/hcn-block-diagram.png)
 
+## Update
+更改为兼容Python2的版本，并修改代码格式
 
 ## Setup
 
