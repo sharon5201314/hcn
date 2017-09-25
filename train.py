@@ -57,10 +57,10 @@ class Trainer():
                 # print #iteration
                 sys.stdout.write('\r{}.[{}/{}]'.format(j+1, i+1, num_tr_examples))
 
-            print('\n\n:: {}.tr loss {}'.format(j+1, loss/num_tr_examples))
+            print('\n\n--- {}.tr loss {} ---'.format(j+1, loss/num_tr_examples))
             # evaluate every epoch
             accuracy = self.evaluate()
-            print(':: {}.dev accuracy {}\n'.format(j+1, accuracy))
+            print('--- {}.dev accuracy {} ---\n'.format(j+1, accuracy))
 
             if accuracy > 0.99:
                 self.net.save()

@@ -1,3 +1,12 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import sys
+from os.path import abspath, dirname, join
+_PROJECT_DIR = dirname(abspath(__file__))
+sys.path.append(_PROJECT_DIR)
+
 from modules.entities import EntityTracker
 from modules.bow import BoW_encoder
 from  modules.lstm_net import LSTM_net

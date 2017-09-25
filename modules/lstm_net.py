@@ -7,13 +7,32 @@ from tensorflow.contrib.layers import xavier_initializer as xav
 
 import numpy as np
 
-class LSTM_net():
+class LSTM_net(object):
 
     def __init__(self, obs_size, nb_hidden=128, action_size=16):
 
         self.obs_size = obs_size
         self.nb_hidden = nb_hidden
         self.action_size = action_size
+
+        def _build_graph(self):
+            tf.reset_default_graph()
+            self._add_hcn_cells()
+            self._add_dynamic_rnn()
+            self._add_output_layer()
+            self._add_loss()
+
+        def _add_hcn_cells():
+            pass
+
+        def _add_dynamic_rnn():
+            pass
+
+        def _add_output_layer():
+            pass
+
+        def _add_loss():
+            pass
 
         def __graph__():
             tf.reset_default_graph()
